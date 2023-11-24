@@ -32,6 +32,17 @@ public class UserController {
         System.out.println("register request: " + userModel);
         UserModel registeredUser = userService.registerUser(userModel.getLogin(), userModel.getPassword(), userModel.getEmail());
         // You should add some logic here for handling the registered user
-        return "redirect:/login"; 
+        return registeredUser == null ? "error_Page" : "redirect:/login"; 
+    }
+    @PostMapping("/login")
+    public String login(@ModelAttribute UserModel userModel,Model model) {
+        System.out.println("login request: " + userModel);
+        UserModel authenticated= userService.authenticate(userModel.getLogin(),userModel.getPassword());
+        if(authenticated !=null){
+            model.addAttribute("userLogin",authenticated.getLogin());
+            return "personal_Page";
+        }else{
+            return "error_Page";
+        }
     }
 }
