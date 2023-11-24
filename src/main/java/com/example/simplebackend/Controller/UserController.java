@@ -15,6 +15,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping("/register")
     public String getRegisterPage(Model model) {
         model.addAttribute("registerRequest", new UserModel());
@@ -31,7 +35,7 @@ public class UserController {
     public String register(@ModelAttribute UserModel userModel) {
         System.out.println("register request: " + userModel);
         UserModel registeredUser = userService.registerUser(userModel.getLogin(), userModel.getPassword(), userModel.getEmail());
-        // You should add some logic here for handling the registered user
+        
         return registeredUser == null ? "error_Page" : "redirect:/login"; 
     }
     @PostMapping("/login")
