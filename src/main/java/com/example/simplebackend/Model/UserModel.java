@@ -19,6 +19,8 @@ public class UserModel {
     String password;
     String email;
     String login;
+    String userType;
+     boolean approved;
     public Integer getId() {
         return id;
     }
@@ -43,6 +45,18 @@ public class UserModel {
     public void setLogin(String login) {
         this.login = login;
     }
+    public String getUserType() {
+        return userType;
+    }
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+    public boolean isApproved() {
+        return approved;
+    }
+    public void setApproved(boolean approved) {
+        this.approved = approved;
+    }
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -51,6 +65,8 @@ public class UserModel {
         result = prime * result + ((password == null) ? 0 : password.hashCode());
         result = prime * result + ((email == null) ? 0 : email.hashCode());
         result = prime * result + ((login == null) ? 0 : login.hashCode());
+        result = prime * result + ((userType == null) ? 0 : userType.hashCode());
+        result = prime * result + (approved ? 1231 : 1237);
         return result;
     }
     @Override
@@ -82,13 +98,22 @@ public class UserModel {
                 return false;
         } else if (!login.equals(other.login))
             return false;
+        if (userType == null) {
+            if (other.userType != null)
+                return false;
+        } else if (!userType.equals(other.userType))
+            return false;
+        if (approved != other.approved)
+            return false;
         return true;
     }
     @Override
     public String toString() {
-        return "UserModel [id=" + id + ", email=" + email + ", login=" + login + "]";
+        return "UserModel [id=" + id + ", email=" + email + ", login=" + login + ", userType=" + userType
+                + ", approved=" + approved + "]";
     }
     
+
     
 
 }

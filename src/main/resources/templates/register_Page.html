@@ -20,7 +20,18 @@
                 <i class='bx bxs-lock-alt'></i>
                 <input type="password" name="password" placeholder="password" th:field="*{password}">
             </div>
-            
+            <div class ="input-box" >
+                Choose user
+                <select name="userType" th:field="*{userType}">
+                      
+                      <option value="Student">Student</option>
+                     <option value="Mentor">Mentor</option>
+                     <option value="Professor">Professor</option>
+                </select>
+
+            </div>
+
+
             <button type="submit" class="btn">Register</button>
             <div class="signin">
                 <p>Already a member? <a href="/">main</a></p>

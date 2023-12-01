@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Your head content -->
+</head>
+<body>
+    <div class="admin-dashboard">
+        <h1>Welcome Admin</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Login</th>
+                    <th>Email</th>
+                    <th>User Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${unapprovedUsers}">
+                    <td th:text="${user.login}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.userType}"></td>
+                    <td>
+                        <!-- Use a hyperlink to initiate the approval process -->
+                        <a th:href="@{'/admin/approve-user/' + ${user.id}}">Approve</a>
+
+                        <!-- Add a link for viewing details if needed -->
+                        <a th:href="@{'/view-details/' + ${user.id}}">View Details</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

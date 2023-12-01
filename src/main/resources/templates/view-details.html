@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Your head content -->
+</head>
+<body>
+    <div class="user-details">
+        <h1>User Details</h1>
+        <p>Login: <span th:text="${userDetails.login}"></span></p>
+        <p>Email: <span th:text="${userDetails.email}"></span></p>
+        <p>User Type: <span th:text="${userDetails.userType}"></span></p>
+        <!-- Add more details as needed -->
+    </div>
+</body>
+</html>
