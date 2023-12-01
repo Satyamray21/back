@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.simplebackend.Model.UserModel;
 import com.example.simplebackend.Service.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class UserController {
@@ -32,6 +34,8 @@ public class UserController {
         model.addAttribute("loginRequest", new UserModel());
         return "login_Page";
     }
+    
+
 
     @PostMapping("/register")
     public String register(@ModelAttribute UserModel userModel, Model model) {
@@ -58,4 +62,11 @@ public class UserController {
             return "error_Page";
         }
     }
+    @PostMapping("/logout")
+    public String logout(HttpSession session) {
+        // Perform logout actions, such as clearing the session
+        session.invalidate();
+        return "redirect:/login"; // Redirect to the login page after logout
+    }
 }
+

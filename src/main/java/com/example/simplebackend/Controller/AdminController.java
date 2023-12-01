@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.simplebackend.Model.UserModel;
 import com.example.simplebackend.Service.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 import java.util.List;
 
 @Controller
@@ -35,6 +37,8 @@ public class AdminController {
         }
     }
 
+   
+
     @GetMapping("/admin/unapproved-users")
     public String getUnapprovedUsers(Model model) {
         List<UserModel> unapprovedUsers = userService.getUnapprovedUsers();
@@ -60,5 +64,11 @@ public class AdminController {
     public String approveUser(@PathVariable Integer userId, Model model) {
         userService.approveUser(userId);
         return "redirect:/admin/unapproved-users";
+    }
+    @PostMapping("/admin/logout")
+    public String logout(HttpSession session) {
+        // Perform logout actions, such as clearing the session
+        session.invalidate();
+        return "redirect:/admin-login"; // Redirect to the login page after logout
     }
 }

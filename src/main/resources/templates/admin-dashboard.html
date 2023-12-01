@@ -26,6 +26,11 @@
 
                         <!-- Add a link for viewing details if needed -->
                         <a th:href="@{'/view-details/' + ${user.id}}">View Details</a>
+
+                        <!-- Logout form -->
+                        <form method="post" th:action="@{/admin/logout}">
+                            <button type="submit">Logout</button>
+                        </form>
                     </td>
                 </tr>
             </tbody>

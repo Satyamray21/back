@@ -21,10 +21,12 @@
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.userType}"></td>
                     <td>
-                        <form method="post" th:action="@{'/admin/approve-user/' + ${user.id}}"> <!-- ... -->
+                        <!-- Logout link -->
+<form method="post" th:action="@{/admin/logout}">
+    <button type="submit">Logout</button>
+</form>
+<a th:href="@{/admin/logout}">Logout</a>
 
-                            <button type="submit">Approve</button>
-                        </form>
                     </td>
                 </tr>
             </tbody>
